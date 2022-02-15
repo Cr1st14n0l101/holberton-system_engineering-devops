@@ -16,7 +16,7 @@ def number_of_subscribers(subreddit):
         'https://www.reddit.com/r/' + subreddit
         + '/about.json', headers=user_agent
         )
-    if resp.status_code == 200:
-        data = resp.json()
-        return data.get('data').get('subscribers')
-    return 0
+    data = resp.json()
+    if data.get('error', 200) == 404:
+        return 0
+    return data.get('data').get('subscribers')
