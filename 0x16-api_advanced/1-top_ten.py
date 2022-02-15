@@ -17,8 +17,11 @@ def top_ten(subreddit):
             'https://www.reddit.com/r/' + subreddit
             + '/hot.json?limit=10', headers=user_agent
             )
-        data = resp.json()
-        for title in data.get('data').get('children'):
-            print(title.get('data').get('title'))
+        if resp.status_code == 200:
+            data = resp.json()
+            for title in data.get('data').get('children'):
+                print(title.get('data').get('title'))
+                return
+        print('None')
     except Exception:
         print('None')
