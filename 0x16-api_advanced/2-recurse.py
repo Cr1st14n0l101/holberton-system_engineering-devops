@@ -21,8 +21,8 @@ def recurse(subreddit, hot_list=[], idx=0, response=None, aftr=''):
     if response.status_code == 200:
         info = json.loads(response.content)
         if idx >= len(info.get('data').get('children')):
-            if info['data']['aftr'] is not None:
-                aftr = '?aftr=' + info.get('data').get('aftr')
+            if info['data']['after'] is not None:
+                aftr = '?after=' + info.get('data').get('after')
                 idx = 0
                 return recurse(subreddit, hot_list, idx, response, aftr)
             else:
