@@ -20,6 +20,8 @@ def recurse(subreddit, hot_list=[], idx=0, response=None, aftr=''):
         response = requests.get(url, headers=user_agent, allow_redirects=False)
     if response.status_code == 200:
         info = json.loads(response.content)
+        if info.get('error', 200) == 404:
+            return None
         if idx >= len(info.get('data').get('children')):
             if info['data']['after'] is not None:
                 aftr = '?after=' + info.get('data').get('after')
