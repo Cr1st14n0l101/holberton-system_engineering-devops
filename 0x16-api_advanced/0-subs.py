@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/bin/usr/python3
 """
 Module for number_of_subscribers function
 """
@@ -14,7 +14,8 @@ def number_of_subscribers(subreddit):
     user_agent = {'User-agent': 'Mozilla/5.0'}
     resp = requests.get(
         'https://www.reddit.com/r/' + subreddit
-        + '/about.json', headers=user_agent
+        + '/about.json', headers=user_agent,
+        allow_redirects=False
         )
     data = resp.json()
     if data.get('error', 200) == 404:
