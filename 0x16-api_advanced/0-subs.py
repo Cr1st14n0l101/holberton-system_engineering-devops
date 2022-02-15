@@ -11,10 +11,10 @@ def number_of_subscribers(subreddit):
     API and returns the number of
     subscribers
     """
+    url = 'https://www.reddit.com/r/{}/about.json'.format(subreddit)
     user_agent = {'User-agent': 'Mozilla/5.0'}
     resp = requests.get(
-        'https://www.reddit.com/r/' + subreddit
-        + '/about.json', headers=user_agent, allow_redirects=False
+        url, headers=user_agent, allow_redirects=False
         )
     if resp.status_code == 404:
         return 0
