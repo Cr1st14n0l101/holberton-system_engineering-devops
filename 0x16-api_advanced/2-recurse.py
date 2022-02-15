@@ -2,8 +2,8 @@
 """
 Module for recurse function
 """
-import requests
 import json
+import requests
 
 
 def recurse(subreddit, hot_list=[], idx=0, response=None, after=''):
