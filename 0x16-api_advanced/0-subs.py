@@ -2,7 +2,6 @@
 """
 Module for number_of_subscribers function
 """
-from urllib import response
 import requests
 
 
