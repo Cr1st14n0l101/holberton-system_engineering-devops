@@ -2,6 +2,7 @@
 """
 Module for number_of_subscribers function
 """
+from urllib import response
 import requests
 
 
@@ -16,7 +17,7 @@ def number_of_subscribers(subreddit):
         'https://www.reddit.com/r/' + subreddit
         + '/about.json', headers=user_agent, allow_redirects=False
         )
-    data = resp.json()
-    if data.get('error', 200) == 404:
+    if resp.status_code == 404:
         return 0
+    data = resp.json()
     return data.get('data').get('subscribers')
