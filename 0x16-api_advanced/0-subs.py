@@ -11,15 +11,12 @@ def number_of_subscribers(subreddit):
     API and returns the number of
     subscribers
     """
-    try:
-        user_agent = {'User-agent': 'Mozilla/5.0'}
-        resp = requests.get(
-            'https://www.reddit.com/r/' + subreddit
-            + '/about.json', headers=user_agent
-            )
-        if resp.status_code == 200:
-            data = resp.json()
-            return data.get('data').get('subscribers')
-        return 0
-    except Exception:
-        return 0
+    user_agent = {'User-agent': 'Mozilla/5.0'}
+    resp = requests.get(
+        'https://www.reddit.com/r/' + subreddit
+        + '/about.json', headers=user_agent
+        )
+    if resp.status_code == 200:
+        data = resp.json()
+        return data.get('data').get('subscribers')
+    return 0
